@@ -3,7 +3,7 @@ package resources
 import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ec2"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type EC2ClientVpnEndpoint struct {
@@ -23,7 +23,6 @@ func ListEC2ClientVpnEndoint(sess *session.Session) ([]Resource, error) {
 
 	err := svc.DescribeClientVpnEndpointsPages(params,
 		func(page *ec2.DescribeClientVpnEndpointsOutput, lastPage bool) bool {
-
 			for _, out := range page.ClientVpnEndpoints {
 				resources = append(resources, &EC2ClientVpnEndpoint{
 					svc: svc,

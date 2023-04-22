@@ -6,7 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/route53"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 func init() {
@@ -39,7 +39,6 @@ func ListRoute53HostedZones(sess *session.Session) ([]Resource, error) {
 			ResourceId:   hz.Id,
 			ResourceType: aws.String("hostedzone"),
 		})
-
 		if err != nil {
 			return nil, err
 		}

@@ -3,7 +3,7 @@ package resources
 import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/iam"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type IAMOpenIDConnectProvider struct {
@@ -32,7 +32,6 @@ func ListIAMOpenIDConnectProvider(sess *session.Session) ([]Resource, error) {
 			OpenIDConnectProviderArn: out.Arn,
 		}
 		resp, err := svc.GetOpenIDConnectProvider(params)
-
 		if err != nil {
 			return nil, err
 		}

@@ -6,7 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/cloudfront"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type CloudFrontDistribution struct {
@@ -73,7 +73,6 @@ func (f *CloudFrontDistribution) Properties() types.Properties {
 }
 
 func (f *CloudFrontDistribution) Remove() error {
-
 	// Get Existing eTag
 	resp, err := f.svc.GetDistributionConfig(&cloudfront.GetDistributionConfigInput{
 		Id: f.ID,

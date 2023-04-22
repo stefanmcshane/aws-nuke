@@ -3,7 +3,7 @@ package resources
 import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/lambda"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type LambdaFunction struct {
@@ -29,7 +29,6 @@ func ListLambdaFunctions(sess *session.Session) ([]Resource, error) {
 		}
 		return true
 	})
-
 	if err != nil {
 		return nil, err
 	}
@@ -39,7 +38,6 @@ func ListLambdaFunctions(sess *session.Session) ([]Resource, error) {
 		tags, err := svc.ListTags(&lambda.ListTagsInput{
 			Resource: function.FunctionArn,
 		})
-
 		if err != nil {
 			continue
 		}
@@ -66,7 +64,6 @@ func (f *LambdaFunction) Properties() types.Properties {
 }
 
 func (f *LambdaFunction) Remove() error {
-
 	_, err := f.svc.DeleteFunction(&lambda.DeleteFunctionInput{
 		FunctionName: f.functionName,
 	})

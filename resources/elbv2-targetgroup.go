@@ -3,7 +3,7 @@ package resources
 import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/elbv2"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type ELBv2TargetGroup struct {
@@ -67,7 +67,6 @@ func (e *ELBv2TargetGroup) Remove() error {
 	_, err := e.svc.DeleteTargetGroup(&elbv2.DeleteTargetGroupInput{
 		TargetGroupArn: e.tg.TargetGroupArn,
 	})
-
 	if err != nil {
 		return err
 	}

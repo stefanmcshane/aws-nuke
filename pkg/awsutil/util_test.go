@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/rebuy-de/aws-nuke/v2/pkg/awsutil"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/awsutil"
 )
 
 func TestSecretRegex(t *testing.T) {

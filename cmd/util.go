@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 func Prompt(expect string) error {
@@ -27,8 +27,8 @@ func Prompt(expect string) error {
 
 func ResolveResourceTypes(
 	base types.Collection, mapping map[string]string,
-	include, exclude, cloudControl []types.Collection) types.Collection {
-
+	include, exclude, cloudControl []types.Collection,
+) types.Collection {
 	for _, cl := range cloudControl {
 		oldStyle := types.Collection{}
 		for _, c := range cl {

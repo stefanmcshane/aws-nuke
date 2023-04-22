@@ -10,9 +10,9 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/cloudformation"
 	"github.com/aws/aws-sdk-go/service/cloudformation/cloudformationiface"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/config"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
 	"github.com/sirupsen/logrus"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/config"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 const CLOUDFORMATION_MAX_DELETE_ATTEMPT = 3
@@ -114,7 +114,7 @@ func (cfs *CloudFormationStack) doRemove() error {
 	stack := o.Stacks[0]
 
 	if *stack.StackStatus == cloudformation.StackStatusDeleteComplete {
-		//stack already deleted, no need to re-delete
+		// stack already deleted, no need to re-delete
 		return nil
 	} else if *stack.StackStatus == cloudformation.StackStatusDeleteInProgress {
 		logrus.Infof("CloudFormationStack stackName=%s delete in progress. Waiting", *cfs.stack.StackName)
@@ -166,6 +166,7 @@ func (cfs *CloudFormationStack) doRemove() error {
 		}
 	}
 }
+
 func (cfs *CloudFormationStack) waitForStackToStabilize(currentStatus string) error {
 	switch currentStatus {
 	case cloudformation.StackStatusUpdateInProgress:

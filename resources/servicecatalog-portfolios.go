@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/servicecatalog"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type ServiceCatalogPortfolio struct {
@@ -52,7 +52,6 @@ func ListServiceCatalogPortfolios(sess *session.Session) ([]Resource, error) {
 }
 
 func (f *ServiceCatalogPortfolio) Remove() error {
-
 	_, err := f.svc.DeletePortfolio(&servicecatalog.DeletePortfolioInput{
 		Id: f.ID,
 	})

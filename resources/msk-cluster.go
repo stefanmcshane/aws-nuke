@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/kafka"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type MSKCluster struct {
@@ -22,7 +22,6 @@ func ListMSKCluster(sess *session.Session) ([]Resource, error) {
 	svc := kafka.New(sess)
 	params := &kafka.ListClustersInput{}
 	resp, err := svc.ListClusters(params)
-
 	if err != nil {
 		return nil, err
 	}
@@ -34,7 +33,6 @@ func ListMSKCluster(sess *session.Session) ([]Resource, error) {
 			name: *cluster.ClusterName,
 			tags: cluster.Tags,
 		})
-
 	}
 	return resources, nil
 }

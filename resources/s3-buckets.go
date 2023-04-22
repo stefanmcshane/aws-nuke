@@ -12,7 +12,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3iface"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 func init() {
@@ -40,7 +40,6 @@ func ListS3Buckets(s *session.Session) ([]Resource, error) {
 		tags, err := svc.GetBucketTagging(&s3.GetBucketTaggingInput{
 			Bucket: bucket.Name,
 		})
-
 		if err != nil {
 			if aerr, ok := err.(awserr.Error); ok {
 				if aerr.Code() == "NoSuchTagSet" {
@@ -75,7 +74,6 @@ func DescribeS3Buckets(svc *s3.S3) ([]s3.Bucket, error) {
 	buckets := make([]s3.Bucket, 0)
 	for _, out := range resp.Buckets {
 		bucketLocationResponse, err := svc.GetBucketLocation(&s3.GetBucketLocationInput{Bucket: out.Name})
-
 		if err != nil {
 			continue
 		}

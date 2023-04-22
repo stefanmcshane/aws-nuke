@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/redshift"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type RedshiftSnapshot struct {
@@ -59,7 +59,6 @@ func (f *RedshiftSnapshot) Properties() types.Properties {
 }
 
 func (f *RedshiftSnapshot) Remove() error {
-
 	_, err := f.svc.DeleteClusterSnapshot(&redshift.DeleteClusterSnapshotInput{
 		SnapshotIdentifier: f.snapshot.SnapshotIdentifier,
 	})

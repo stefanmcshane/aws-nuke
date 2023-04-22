@@ -3,7 +3,7 @@ package resources
 import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/rds"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type RDSProxy struct {
@@ -30,7 +30,6 @@ func ListRDSProxies(sess *session.Session) ([]Resource, error) {
 		tags, err := svc.ListTagsForResource(&rds.ListTagsForResourceInput{
 			ResourceName: instance.DBProxyArn,
 		})
-
 		if err != nil {
 			continue
 		}

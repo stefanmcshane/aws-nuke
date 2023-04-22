@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/servicecatalog"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type ServiceCatalogProvisionedProduct struct {
@@ -58,7 +58,6 @@ func ListServiceCatalogProvisionedProducts(sess *session.Session) ([]Resource, e
 }
 
 func (f *ServiceCatalogProvisionedProduct) Remove() error {
-
 	_, err := f.svc.TerminateProvisionedProduct(&servicecatalog.TerminateProvisionedProductInput{
 		ProvisionedProductId: f.ID,
 		IgnoreErrors:         aws.Bool(true),

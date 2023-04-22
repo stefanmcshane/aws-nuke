@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/rebuy-de/aws-nuke/v2/pkg/config"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/config"
 	yaml "gopkg.in/yaml.v3"
 )
 
@@ -48,14 +48,16 @@ func TestUnmarshalFilter(t *testing.T) {
 		},
 		{
 			yaml: `{"type":"dateOlderThan","value":"0"}`,
-			match: []string{strconv.Itoa(int(future.Unix())),
+			match: []string{
+				strconv.Itoa(int(future.Unix())),
 				future.Format("2006-01-02"),
 				future.Format("2006/01/02"),
 				future.Format("2006-01-02T15:04:05Z"),
 				future.Format(time.RFC3339Nano),
 				future.Format(time.RFC3339),
 			},
-			mismatch: []string{"",
+			mismatch: []string{
+				"",
 				strconv.Itoa(int(past.Unix())),
 				past.Format("2006-01-02"),
 				past.Format("2006/01/02"),
@@ -98,5 +100,4 @@ func TestUnmarshalFilter(t *testing.T) {
 			}
 		})
 	}
-
 }

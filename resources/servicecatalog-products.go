@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/servicecatalog"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type ServiceCatalogProduct struct {
@@ -50,7 +50,6 @@ func ListServiceCatalogProducts(sess *session.Session) ([]Resource, error) {
 }
 
 func (f *ServiceCatalogProduct) Remove() error {
-
 	_, err := f.svc.DeleteProduct(&servicecatalog.DeleteProductInput{
 		Id: f.ID,
 	})

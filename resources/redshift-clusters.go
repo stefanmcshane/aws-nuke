@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/redshift"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type RedshiftCluster struct {
@@ -59,7 +59,6 @@ func (f *RedshiftCluster) Properties() types.Properties {
 }
 
 func (f *RedshiftCluster) Remove() error {
-
 	_, err := f.svc.DeleteCluster(&redshift.DeleteClusterInput{
 		ClusterIdentifier:        f.cluster.ClusterIdentifier,
 		SkipFinalClusterSnapshot: aws.Bool(true),

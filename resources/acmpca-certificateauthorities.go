@@ -6,7 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/acmpca"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type ACMPCACertificateAuthority struct {
@@ -73,7 +73,6 @@ func ListACMPCACertificateAuthorities(sess *session.Session) ([]Resource, error)
 }
 
 func (f *ACMPCACertificateAuthority) Remove() error {
-
 	_, err := f.svc.DeleteCertificateAuthority(&acmpca.DeleteCertificateAuthorityInput{
 		CertificateAuthorityArn: f.ARN,
 	})

@@ -6,7 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/codestarnotifications"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type CodeStarNotificationRule struct {
@@ -63,7 +63,6 @@ func ListCodeStarNotificationRules(sess *session.Session) ([]Resource, error) {
 }
 
 func (cn *CodeStarNotificationRule) Remove() error {
-
 	_, err := cn.svc.DeleteNotificationRule(&codestarnotifications.DeleteNotificationRuleInput{
 		Arn: cn.arn,
 	})

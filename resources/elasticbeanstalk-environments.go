@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/elasticbeanstalk"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type ElasticBeanstalkEnvironment struct {
@@ -51,7 +51,6 @@ func ListElasticBeanstalkEnvironments(sess *session.Session) ([]Resource, error)
 }
 
 func (f *ElasticBeanstalkEnvironment) Remove() error {
-
 	_, err := f.svc.TerminateEnvironment(&elasticbeanstalk.TerminateEnvironmentInput{
 		EnvironmentId:      f.ID,
 		ForceTerminate:     aws.Bool(true),

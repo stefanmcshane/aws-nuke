@@ -6,7 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/servicecatalog"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type ServiceCatalogPortfolioProductAttachment struct {
@@ -30,7 +30,7 @@ func ListServiceCatalogPortfolioProductAttachments(sess *session.Session) ([]Res
 		PageSize: aws.Int64(20),
 	}
 
-	//List all Products and then search assigned portfolios
+	// List all Products and then search assigned portfolios
 	for {
 		resp, err := svc.SearchProductsAsAdmin(params)
 		if err != nil {
@@ -82,7 +82,6 @@ func ListServiceCatalogPortfolioProductAttachments(sess *session.Session) ([]Res
 }
 
 func (f *ServiceCatalogPortfolioProductAttachment) Remove() error {
-
 	_, err := f.svc.DisassociateProductFromPortfolio(&servicecatalog.DisassociateProductFromPortfolioInput{
 		ProductId:   f.productID,
 		PortfolioId: f.portfolioID,

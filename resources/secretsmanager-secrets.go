@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/secretsmanager"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type SecretsManagerSecret struct {
@@ -50,7 +50,6 @@ func ListSecretsManagerSecrets(sess *session.Session) ([]Resource, error) {
 }
 
 func (f *SecretsManagerSecret) Remove() error {
-
 	_, err := f.svc.DeleteSecret(&secretsmanager.DeleteSecretInput{
 		SecretId:                   f.ARN,
 		ForceDeleteWithoutRecovery: aws.Bool(true),

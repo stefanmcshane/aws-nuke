@@ -7,7 +7,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ec2"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type EC2NetworkInterface struct {
@@ -29,7 +29,6 @@ func ListEC2NetworkInterfaces(sess *session.Session) ([]Resource, error) {
 
 	resources := make([]Resource, 0)
 	for _, out := range resp.NetworkInterfaces {
-
 		resources = append(resources, &EC2NetworkInterface{
 			svc: svc,
 			eni: out,
@@ -40,7 +39,6 @@ func ListEC2NetworkInterfaces(sess *session.Session) ([]Resource, error) {
 }
 
 func (e *EC2NetworkInterface) Remove() error {
-
 	if e.eni.Attachment != nil {
 		_, err := e.svc.DetachNetworkInterface(&ec2.DetachNetworkInterfaceInput{
 			AttachmentId: e.eni.Attachment.AttachmentId,
@@ -53,7 +51,6 @@ func (e *EC2NetworkInterface) Remove() error {
 					return err
 				}
 			}
-
 		}
 	}
 

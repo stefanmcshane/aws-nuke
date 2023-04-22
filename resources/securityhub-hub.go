@@ -3,7 +3,7 @@ package resources
 import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/securityhub"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 func init() {
@@ -16,7 +16,6 @@ func ListHubs(sess *session.Session) ([]Resource, error) {
 	resources := make([]Resource, 0)
 
 	resp, err := svc.DescribeHub(nil)
-
 	if err != nil {
 		if IsAWSError(err, securityhub.ErrCodeInvalidAccessException) {
 			// Security Hub is not enabled for this region

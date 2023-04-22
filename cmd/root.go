@@ -6,11 +6,11 @@ import (
 	"sort"
 
 	"github.com/aws/aws-sdk-go/aws/endpoints"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/awsutil"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/config"
-	"github.com/rebuy-de/aws-nuke/v2/resources"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/awsutil"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/config"
+	"github.com/stefanmcshane/aws-nuke/v2/resources"
 )
 
 func NewRootCommand() *cobra.Command {

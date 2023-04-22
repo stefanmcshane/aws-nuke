@@ -5,7 +5,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/iam"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type UserSSHKey struct {
@@ -31,7 +31,6 @@ func ListIAMUserSSHPublicKeys(sess *session.Session) ([]Resource, error) {
 		listOutput, err := svc.ListSSHPublicKeys(&iam.ListSSHPublicKeysInput{
 			UserName: user.UserName,
 		})
-
 		if err != nil {
 			return nil, err
 		}

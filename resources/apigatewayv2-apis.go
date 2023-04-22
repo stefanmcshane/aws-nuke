@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/apigatewayv2"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type APIGatewayV2API struct {
@@ -56,7 +56,6 @@ func ListAPIGatewayV2APIs(sess *session.Session) ([]Resource, error) {
 }
 
 func (f *APIGatewayV2API) Remove() error {
-
 	_, err := f.svc.DeleteApi(&apigatewayv2.DeleteApiInput{
 		ApiId: f.v2APIID,
 	})

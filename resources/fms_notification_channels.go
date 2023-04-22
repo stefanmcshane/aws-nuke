@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/fms"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type FMSNotificationChannel struct {
@@ -37,7 +37,6 @@ func ListFMSNotificationChannel(sess *session.Session) ([]Resource, error) {
 }
 
 func (f *FMSNotificationChannel) Remove() error {
-
 	_, err := f.svc.DeleteNotificationChannel(&fms.DeleteNotificationChannelInput{})
 
 	return err

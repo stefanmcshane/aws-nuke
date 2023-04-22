@@ -3,7 +3,7 @@ package resources
 import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/imagebuilder"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type ImageBuilderPipeline struct {
@@ -22,7 +22,6 @@ func ListImageBuilderPipelines(sess *session.Session) ([]Resource, error) {
 
 	for {
 		resp, err := svc.ListImagePipelines(params)
-
 		if err != nil {
 			return nil, err
 		}

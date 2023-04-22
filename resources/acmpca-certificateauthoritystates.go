@@ -6,7 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/acmpca"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type ACMPCACertificateAuthorityState struct {
@@ -72,7 +72,6 @@ func ListACMPCACertificateAuthorityStates(sess *session.Session) ([]Resource, er
 }
 
 func (f *ACMPCACertificateAuthorityState) Remove() error {
-
 	_, err := f.svc.UpdateCertificateAuthority(&acmpca.UpdateCertificateAuthorityInput{
 		CertificateAuthorityArn: f.ARN,
 		Status:                  aws.String("DISABLED"),
@@ -86,7 +85,6 @@ func (f *ACMPCACertificateAuthorityState) String() string {
 }
 
 func (f *ACMPCACertificateAuthorityState) Filter() error {
-
 	switch *f.status {
 	case "CREATING":
 		return fmt.Errorf("available for deletion")
@@ -99,7 +97,6 @@ func (f *ACMPCACertificateAuthorityState) Filter() error {
 	default:
 		return nil
 	}
-
 }
 
 func (f *ACMPCACertificateAuthorityState) Properties() types.Properties {

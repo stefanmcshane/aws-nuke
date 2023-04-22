@@ -5,7 +5,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/efs"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type EFSMountTarget struct {
@@ -48,7 +48,6 @@ func ListEFSMountTargets(sess *session.Session) ([]Resource, error) {
 				fsid:   *t.FileSystemId,
 				fsTags: lto.Tags,
 			})
-
 		}
 	}
 

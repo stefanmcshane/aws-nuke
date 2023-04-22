@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ec2"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type EC2DefaultSecurityGroupRule struct {
@@ -82,7 +82,6 @@ func (r *EC2DefaultSecurityGroupRule) Remove() error {
 			SecurityGroupRuleIds: rules,
 		}
 		_, err := r.svc.RevokeSecurityGroupEgress(params)
-
 		if err != nil {
 			return err
 		}
@@ -92,7 +91,6 @@ func (r *EC2DefaultSecurityGroupRule) Remove() error {
 			SecurityGroupRuleIds: rules,
 		}
 		_, err := r.svc.RevokeSecurityGroupIngress(params)
-
 		if err != nil {
 			return err
 		}

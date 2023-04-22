@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type DynamoDBTable struct {
@@ -28,14 +28,13 @@ func ListDynamoDBTables(sess *session.Session) ([]Resource, error) {
 	resources := make([]Resource, 0)
 	for _, tableName := range resp.TableNames {
 		tags, err := GetTableTags(svc, tableName)
-
 		if err != nil {
 			continue
 		}
 
 		resources = append(resources, &DynamoDBTable{
-			svc: svc,
-			id:  *tableName,
+			svc:  svc,
+			id:   *tableName,
 			tags: tags,
 		})
 	}
@@ -60,15 +59,13 @@ func GetTableTags(svc *dynamodb.DynamoDB, tableName *string) ([]*dynamodb.Tag, e
 	result, err := svc.DescribeTable(&dynamodb.DescribeTableInput{
 		TableName: aws.String(*tableName),
 	})
-
 	if err != nil {
 		return make([]*dynamodb.Tag, 0), err
 	}
 
-	tags, err :=  svc.ListTagsOfResource(&dynamodb.ListTagsOfResourceInput{
+	tags, err := svc.ListTagsOfResource(&dynamodb.ListTagsOfResourceInput{
 		ResourceArn: result.Table.TableArn,
 	})
-
 	if err != nil {
 		return make([]*dynamodb.Tag, 0), err
 	}
@@ -77,16 +74,15 @@ func GetTableTags(svc *dynamodb.DynamoDB, tableName *string) ([]*dynamodb.Tag, e
 }
 
 func (i *DynamoDBTable) Properties() types.Properties {
-        properties := types.NewProperties()
-        properties.Set("Identifier", i.id)
+	properties := types.NewProperties()
+	properties.Set("Identifier", i.id)
 
-        for _, tag := range i.tags {
-                properties.SetTag(tag.Key, tag.Value)
-        }
+	for _, tag := range i.tags {
+		properties.SetTag(tag.Key, tag.Value)
+	}
 
-        return properties
+	return properties
 }
-
 
 func (i *DynamoDBTable) String() string {
 	return i.id

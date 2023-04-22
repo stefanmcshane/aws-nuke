@@ -6,8 +6,8 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/rds"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/config"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/config"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type RDSInstance struct {
@@ -36,7 +36,6 @@ func ListRDSInstances(sess *session.Session) ([]Resource, error) {
 		tags, err := svc.ListTagsForResource(&rds.ListTagsForResourceInput{
 			ResourceName: instance.DBInstanceArn,
 		})
-
 		if err != nil {
 			continue
 		}

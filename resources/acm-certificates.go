@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/acm"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type ACMCertificate struct {
@@ -32,7 +32,8 @@ func ListACMCertificates(sess *session.Session) ([]Resource, error) {
 				acm.KeyAlgorithmRsa1024,
 				acm.KeyAlgorithmRsa2048,
 				acm.KeyAlgorithmRsa4096,
-			})},
+			}),
+		},
 	}
 
 	for {
@@ -79,7 +80,6 @@ func ListACMCertificates(sess *session.Session) ([]Resource, error) {
 }
 
 func (f *ACMCertificate) Remove() error {
-
 	_, err := f.svc.DeleteCertificate(&acm.DeleteCertificateInput{
 		CertificateArn: f.certificateARN,
 	})

@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/lexmodelbuildingservice"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type LexSlotType struct {
@@ -48,7 +48,6 @@ func ListLexSlotTypes(sess *session.Session) ([]Resource, error) {
 }
 
 func (f *LexSlotType) Remove() error {
-
 	_, err := f.svc.DeleteSlotType(&lexmodelbuildingservice.DeleteSlotTypeInput{
 		Name: f.name,
 	})

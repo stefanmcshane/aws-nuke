@@ -3,7 +3,7 @@ package resources
 import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/cloudtrail"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 func init() {
@@ -23,7 +23,6 @@ func ListCloudTrailTrails(sess *session.Session) ([]Resource, error) {
 			svc:  svc,
 			name: trail.Name,
 		})
-
 	}
 	return resources, nil
 }

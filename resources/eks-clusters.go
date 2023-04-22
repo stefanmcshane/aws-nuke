@@ -6,7 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/eks"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type EKSCluster struct {
@@ -54,7 +54,6 @@ func ListEKSClusters(sess *session.Session) ([]Resource, error) {
 }
 
 func (f *EKSCluster) Remove() error {
-
 	_, err := f.svc.DeleteCluster(&eks.DeleteClusterInput{
 		Name: f.name,
 	})

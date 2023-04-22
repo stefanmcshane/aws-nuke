@@ -5,7 +5,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/waf"
 	"github.com/aws/aws-sdk-go/service/wafregional"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type WAFRegionalRulePredicate struct {
@@ -69,7 +69,7 @@ func (r *WAFRegionalRulePredicate) Remove() error {
 		ChangeToken: tokenOutput.ChangeToken,
 		RuleId:      r.ruleID,
 		Updates: []*waf.RuleUpdate{
-			&waf.RuleUpdate{
+			{
 				Action:    aws.String("DELETE"),
 				Predicate: r.predicate,
 			},

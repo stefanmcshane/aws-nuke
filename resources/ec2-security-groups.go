@@ -5,7 +5,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ec2"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type EC2SecurityGroup struct {
@@ -42,7 +42,6 @@ func ListEC2SecurityGroups(sess *session.Session) ([]Resource, error) {
 			}
 			return !lastPage
 		})
-
 	if err != nil {
 		return nil, err
 	}

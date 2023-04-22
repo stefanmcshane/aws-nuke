@@ -5,7 +5,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/elb"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type ELBLoadBalancer struct {
@@ -32,7 +32,6 @@ func ListELBLoadBalancers(sess *session.Session) ([]Resource, error) {
 			}
 			return !lastPage
 		})
-
 	if err != nil {
 		return nil, err
 	}

@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/fms"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type FMSPolicy struct {
@@ -48,7 +48,6 @@ func ListFMSPolicies(sess *session.Session) ([]Resource, error) {
 }
 
 func (f *FMSPolicy) Remove() error {
-
 	_, err := f.svc.DeletePolicy(&fms.DeletePolicyInput{
 		PolicyId:                 f.policy.PolicyId,
 		DeleteAllPolicyResources: aws.Bool(false),

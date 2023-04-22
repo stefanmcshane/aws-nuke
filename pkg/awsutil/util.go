@@ -6,13 +6,11 @@ import (
 	"net/http/httputil"
 	"regexp"
 
-	"github.com/rebuy-de/aws-nuke/v2/pkg/util"
 	log "github.com/sirupsen/logrus"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/util"
 )
 
-var (
-	RESecretHeader = regexp.MustCompile(`(?m:^([^:]*(Auth|Security)[^:]*):.*$)`)
-)
+var RESecretHeader = regexp.MustCompile(`(?m:^([^:]*(Auth|Security)[^:]*):.*$)`)
 
 func HideSecureHeaders(dump []byte) []byte {
 	return RESecretHeader.ReplaceAll(dump, []byte("$1: <hidden>"))

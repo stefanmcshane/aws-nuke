@@ -4,8 +4,8 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/cognitoidentityprovider"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
 	"github.com/sirupsen/logrus"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type CognitoIdentityProvider struct {
@@ -70,7 +70,6 @@ func ListCognitoIdentityProviders(sess *session.Session) ([]Resource, error) {
 }
 
 func (p *CognitoIdentityProvider) Remove() error {
-
 	_, err := p.svc.DeleteIdentityProvider(&cognitoidentityprovider.DeleteIdentityProviderInput{
 		UserPoolId:   p.userPoolId,
 		ProviderName: p.name,

@@ -7,7 +7,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/budgets"
 	"github.com/aws/aws-sdk-go/service/sts"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 func init() {
@@ -62,7 +62,6 @@ func ListBudgets(sess *session.Session) ([]Resource, error) {
 }
 
 func (b *Budget) Remove() error {
-
 	_, err := b.svc.DeleteBudget(&budgets.DeleteBudgetInput{
 		AccountId:  b.accountId,
 		BudgetName: b.name,

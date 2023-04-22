@@ -5,7 +5,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/route53resolver"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 // Route53ResolverEndpoint is the resource type for nuking
@@ -29,7 +29,6 @@ func ListRoute53ResolverEndpoints(sess *session.Session) ([]Resource, error) {
 
 	for {
 		resp, err := svc.ListResolverEndpoints(params)
-
 		if err != nil {
 			return nil, err
 		}
@@ -60,7 +59,6 @@ func (r *Route53ResolverEndpoint) Remove() error {
 		&route53resolver.DeleteResolverEndpointInput{
 			ResolverEndpointId: r.id,
 		})
-
 	if err != nil {
 		return err
 	}

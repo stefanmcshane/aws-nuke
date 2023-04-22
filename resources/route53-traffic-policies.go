@@ -6,7 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/route53"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type Route53TrafficPolicy struct {
@@ -34,7 +34,6 @@ func ListRoute53TrafficPolicies(sess *session.Session) ([]Resource, error) {
 
 		for _, trafficPolicy := range resp.TrafficPolicySummaries {
 			instances, err := instancesForPolicy(svc, trafficPolicy.Id, trafficPolicy.LatestVersion)
-
 			if err != nil {
 				return nil, fmt.Errorf("failed to get instance for policy %s %w", *trafficPolicy.Id, err)
 			}
@@ -66,7 +65,6 @@ func instancesForPolicy(svc *route53.Route53, policyID *string, version *int64) 
 
 	for {
 		resp, err := svc.ListTrafficPolicyInstancesByPolicy(params)
-
 		if err != nil {
 			return nil, err
 		}
@@ -90,7 +88,6 @@ func (tp *Route53TrafficPolicy) Remove() error {
 		_, err := tp.svc.DeleteTrafficPolicyInstance(&route53.DeleteTrafficPolicyInstanceInput{
 			Id: instance.Id,
 		})
-
 		if err != nil {
 			return fmt.Errorf("failed to delete instance %s %w", *instance.Id, err)
 		}

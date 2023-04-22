@@ -6,7 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/servicecatalog"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type ServiceCatalogPrincipalPortfolioAttachment struct {
@@ -29,7 +29,7 @@ func ListServiceCatalogPrincipalPortfolioAttachments(sess *session.Session) ([]R
 		PageSize: aws.Int64(20),
 	}
 
-	//List all Portfolios
+	// List all Portfolios
 	for {
 		resp, err := svc.ListPortfolios(params)
 		if err != nil {
@@ -80,7 +80,6 @@ func ListServiceCatalogPrincipalPortfolioAttachments(sess *session.Session) ([]R
 }
 
 func (f *ServiceCatalogPrincipalPortfolioAttachment) Remove() error {
-
 	_, err := f.svc.DisassociatePrincipalFromPortfolio(&servicecatalog.DisassociatePrincipalFromPortfolioInput{
 		PrincipalARN: f.principalARN,
 		PortfolioId:  f.portfolioID,

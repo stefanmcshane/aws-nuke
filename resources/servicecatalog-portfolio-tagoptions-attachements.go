@@ -6,8 +6,8 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/servicecatalog"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
 	log "github.com/sirupsen/logrus"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type ServiceCatalogTagOptionPortfolioAttachment struct {
@@ -32,7 +32,7 @@ func ListServiceCatalogTagOptionPortfolioAttachments(sess *session.Session) ([]R
 		PageSize: aws.Int64(20),
 	}
 
-	//List all Tag Options
+	// List all Tag Options
 	for {
 		resp, err := svc.ListTagOptions(params)
 		if err != nil {
@@ -88,7 +88,6 @@ func ListServiceCatalogTagOptionPortfolioAttachments(sess *session.Session) ([]R
 }
 
 func (f *ServiceCatalogTagOptionPortfolioAttachment) Remove() error {
-
 	_, err := f.svc.DisassociateTagOptionFromResource(&servicecatalog.DisassociateTagOptionFromResourceInput{
 		TagOptionId: f.tagOptionID,
 		ResourceId:  f.resourceID,

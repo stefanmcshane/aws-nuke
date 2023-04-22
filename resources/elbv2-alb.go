@@ -7,8 +7,8 @@ import (
 	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/elbv2"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/config"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/config"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type ELBv2LoadBalancer struct {
@@ -35,7 +35,6 @@ func ListELBv2LoadBalancers(sess *session.Session) ([]Resource, error) {
 			}
 			return !lastPage
 		})
-
 	if err != nil {
 		return nil, err
 	}

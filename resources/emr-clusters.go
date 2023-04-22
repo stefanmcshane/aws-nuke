@@ -7,7 +7,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/emr"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type EMRCluster struct {
@@ -57,8 +57,7 @@ func (f *EMRCluster) Properties() types.Properties {
 }
 
 func (f *EMRCluster) Remove() error {
-
-	//Call names are inconsistent in the SDK
+	// Call names are inconsistent in the SDK
 	_, err := f.svc.TerminateJobFlows(&emr.TerminateJobFlowsInput{
 		JobFlowIds: []*string{f.cluster.Id},
 	})

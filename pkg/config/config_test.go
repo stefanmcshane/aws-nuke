@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 func TestConfigBlocklist(t *testing.T) {
@@ -184,9 +184,11 @@ func TestResolveDeprecations(t *testing.T) {
 			"555133742": {
 				Filters: Filters{
 					"IamUserAccessKeys": {
-						NewExactFilter("X")},
+						NewExactFilter("X"),
+					},
 					"IAMUserAccessKey": {
-						NewExactFilter("Y")},
+						NewExactFilter("Y"),
+					},
 				},
 			},
 		},
@@ -303,6 +305,5 @@ func TestGetCustomRegion(t *testing.T) {
 		if rdsService != nil {
 			t.Fatal("Expected to not find a custom rds service for region10")
 		}
-
 	})
 }

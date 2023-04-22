@@ -3,7 +3,7 @@ package resources
 import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/elasticsearchservice"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type ESDomain struct {
@@ -47,7 +47,6 @@ func ListESDomains(sess *session.Session) ([]Resource, error) {
 }
 
 func (f *ESDomain) Remove() error {
-
 	_, err := f.svc.DeleteElasticsearchDomain(&elasticsearchservice.DeleteElasticsearchDomainInput{
 		DomainName: f.domainName,
 	})

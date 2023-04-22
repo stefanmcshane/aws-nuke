@@ -6,7 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/route53"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type Route53ResourceRecordSet struct {
@@ -95,7 +95,7 @@ func (r *Route53ResourceRecordSet) Remove() error {
 		HostedZoneId: r.hostedZoneId,
 		ChangeBatch: &route53.ChangeBatch{
 			Changes: []*route53.Change{
-				&route53.Change{
+				{
 					Action:            aws.String("DELETE"),
 					ResourceRecordSet: r.data,
 				},

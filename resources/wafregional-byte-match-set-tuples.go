@@ -5,7 +5,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/waf"
 	"github.com/aws/aws-sdk-go/service/wafregional"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type WAFRegionalByteMatchSetIP struct {
@@ -70,7 +70,7 @@ func (r *WAFRegionalByteMatchSetIP) Remove() error {
 		ChangeToken:    tokenOutput.ChangeToken,
 		ByteMatchSetId: r.matchSetid,
 		Updates: []*waf.ByteMatchSetUpdate{
-			&waf.ByteMatchSetUpdate{
+			{
 				Action:         aws.String("DELETE"),
 				ByteMatchTuple: r.tuple,
 			},

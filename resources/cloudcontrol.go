@@ -9,8 +9,8 @@ import (
 	"github.com/aws/aws-sdk-go/service/cloudcontrolapi"
 	"github.com/google/uuid"
 	"github.com/pkg/errors"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
 	"github.com/sirupsen/logrus"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 func init() {
@@ -70,7 +70,6 @@ func NewListCloudControlResource(typeName string) func(*session.Session) ([]Reso
 
 			return true
 		})
-
 		if err != nil {
 			return nil, err
 		}

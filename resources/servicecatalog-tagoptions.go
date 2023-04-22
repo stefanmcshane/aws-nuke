@@ -4,8 +4,8 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/servicecatalog"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
 	log "github.com/sirupsen/logrus"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type ServiceCatalogTagOption struct {
@@ -57,7 +57,6 @@ func ListServiceCatalogTagOptions(sess *session.Session) ([]Resource, error) {
 }
 
 func (f *ServiceCatalogTagOption) Remove() error {
-
 	_, err := f.svc.DeleteTagOption(&servicecatalog.DeleteTagOptionInput{
 		Id: f.ID,
 	})

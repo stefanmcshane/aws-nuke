@@ -6,7 +6,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/servicecatalog"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type ServiceCatalogPortfolioShareAttachment struct {
@@ -29,7 +29,7 @@ func ListServiceCatalogPortfolioShareAttachments(sess *session.Session) ([]Resou
 		PageSize: aws.Int64(20),
 	}
 
-	//List all Portfolios
+	// List all Portfolios
 	for {
 		resp, err := svc.ListPortfolios(params)
 		if err != nil {
@@ -74,7 +74,6 @@ func ListServiceCatalogPortfolioShareAttachments(sess *session.Session) ([]Resou
 }
 
 func (f *ServiceCatalogPortfolioShareAttachment) Remove() error {
-
 	_, err := f.svc.DeletePortfolioShare(&servicecatalog.DeletePortfolioShareInput{
 		AccountId:   f.accountID,
 		PortfolioId: f.portfolioID,

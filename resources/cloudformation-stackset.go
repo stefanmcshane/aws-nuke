@@ -9,8 +9,8 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/cloudformation"
 	"github.com/aws/aws-sdk-go/service/cloudformation/cloudformationiface"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
 	"github.com/sirupsen/logrus"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 func init() {
@@ -117,7 +117,7 @@ func (cfs *CloudFormationStackSet) deleteStackInstances(accountId string, region
 		StackSetName: cfs.stackSetSummary.StackSetName,
 		Accounts:     []*string{&accountId},
 		Regions:      regionsInput,
-		RetainStacks: aws.Bool(true), //this will remove the stack set instance from the stackset, but will leave the stack in the account/region it was deployed to
+		RetainStacks: aws.Bool(true), // this will remove the stack set instance from the stackset, but will leave the stack in the account/region it was deployed to
 	})
 
 	fmt.Printf("got result=%v err=%v\n", result, err)

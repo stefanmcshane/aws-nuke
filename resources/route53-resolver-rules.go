@@ -5,7 +5,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/route53resolver"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type (
@@ -37,7 +37,6 @@ func ListRoute53ResolverRules(sess *session.Session) ([]Resource, error) {
 	params := &route53resolver.ListResolverRulesInput{}
 	for {
 		resp, err := svc.ListResolverRules(params)
-
 		if err != nil {
 			return nil, err
 		}
@@ -70,7 +69,6 @@ func resolverRulesToVpcIDs(svc *route53resolver.Route53Resolver) (map[string][]*
 
 	for {
 		resp, err := svc.ListResolverRuleAssociations(params)
-
 		if err != nil {
 			return nil, err
 		}
@@ -114,7 +112,6 @@ func (r *Route53ResolverRule) Remove() error {
 			ResolverRuleId: r.id,
 			VPCId:          vpcID,
 		})
-
 		if err != nil {
 			return err
 		}

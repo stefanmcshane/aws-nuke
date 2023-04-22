@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/lexmodelbuildingservice"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type LexBot struct {
@@ -50,7 +50,6 @@ func ListLexBots(sess *session.Session) ([]Resource, error) {
 }
 
 func (f *LexBot) Remove() error {
-
 	_, err := f.svc.DeleteBot(&lexmodelbuildingservice.DeleteBotInput{
 		Name: f.name,
 	})

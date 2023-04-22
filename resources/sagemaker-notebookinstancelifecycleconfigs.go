@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/sagemaker"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type SageMakerNotebookInstanceLifecycleConfig struct {
@@ -48,7 +48,6 @@ func ListSageMakerNotebookInstanceLifecycleConfigs(sess *session.Session) ([]Res
 }
 
 func (f *SageMakerNotebookInstanceLifecycleConfig) Remove() error {
-
 	_, err := f.svc.DeleteNotebookInstanceLifecycleConfig(&sagemaker.DeleteNotebookInstanceLifecycleConfigInput{
 		NotebookInstanceLifecycleConfigName: f.Name,
 	})

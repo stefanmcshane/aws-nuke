@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/apigatewayv2"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type APIGatewayV2VpcLink struct {
@@ -52,7 +52,6 @@ func ListAPIGatewayV2VpcLinks(sess *session.Session) ([]Resource, error) {
 }
 
 func (f *APIGatewayV2VpcLink) Remove() error {
-
 	_, err := f.svc.DeleteVpcLink(&apigatewayv2.DeleteVpcLinkInput{
 		VpcLinkId: f.vpcLinkID,
 	})

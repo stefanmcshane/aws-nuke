@@ -5,7 +5,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ec2"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type EC2NetworkACL struct {
@@ -30,7 +30,6 @@ func ListEC2NetworkACLs(sess *session.Session) ([]Resource, error) {
 
 	resources := make([]Resource, 0)
 	for _, out := range resp.NetworkAcls {
-
 		resources = append(resources, &EC2NetworkACL{
 			svc:       svc,
 			id:        out.NetworkAclId,

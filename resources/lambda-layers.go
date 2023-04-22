@@ -3,7 +3,7 @@ package resources
 import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/lambda"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type lambdaLayer struct {
@@ -59,7 +59,6 @@ func ListLambdaLayers(sess *session.Session) ([]Resource, error) {
 }
 
 func (l *lambdaLayer) Remove() error {
-
 	_, err := l.svc.DeleteLayerVersion(&lambda.DeleteLayerVersionInput{
 		LayerName:     l.layerName,
 		VersionNumber: &l.version,

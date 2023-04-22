@@ -4,7 +4,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/cloudwatch"
-	"github.com/rebuy-de/aws-nuke/v2/pkg/types"
+	"github.com/stefanmcshane/aws-nuke/v2/pkg/types"
 )
 
 type CloudWatchAlarm struct {
@@ -63,7 +63,6 @@ func GetAlarmTags(svc *cloudwatch.CloudWatch, arn *string) ([]*cloudwatch.Tag, e
 }
 
 func (f *CloudWatchAlarm) Remove() error {
-
 	_, err := f.svc.DeleteAlarms(&cloudwatch.DeleteAlarmsInput{
 		AlarmNames: []*string{f.alarmName},
 	})
